@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 
 final class SearchController: UITableViewController {
     
@@ -55,17 +54,11 @@ extension SearchController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let parameters = ["term": searchText]
-        
-        AF.request("https://itunes.apple.com/search", parameters: parameters, encoding: URLEncoding.default).responseData { [weak self] response in
-            guard let self else { return }
-            guard response.error == nil else { return }
-            guard let data = response.data else { return }
-            
-            do {
-                let decodedObj = try JSONDecoder().decode(SearchResponse.self, from: data)
-                self.podcasts = decodedObj.results
-            } catch {
+        NetworkManager.shared.fetchPodcasts(for: searchText) { result in
+            switch result {
+            case .success(let podcasts):
+                self.podcasts = podcasts
+            case .failure(let error):
                 print(error)
             }
         }

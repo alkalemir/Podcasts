@@ -17,6 +17,7 @@
 		2D5D476E29FD6D800071DFCA /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D476D29FD6D800071DFCA /* Podcast.swift */; };
 		2D5D477129FD72550071DFCA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2D5D477029FD72550071DFCA /* Alamofire */; };
 		2D5D477329FD76DE0071DFCA /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D477229FD76DE0071DFCA /* SearchResponse.swift */; };
+		2D5D477829FD81F70071DFCA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D477729FD81F70071DFCA /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		2D5D476A29FD6D160071DFCA /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		2D5D476D29FD6D800071DFCA /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		2D5D477229FD76DE0071DFCA /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		2D5D477729FD81F70071DFCA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		2D50E16729FD57800009BBE9 /* Podcasts */ = {
 			isa = PBXGroup;
 			children = (
+				2D5D477629FD81EE0071DFCA /* NetworkManager */,
 				2D5D476C29FD6D6F0071DFCA /* Models */,
 				2D5D476929FD6D0D0071DFCA /* Controllers */,
 				2D50E16829FD57800009BBE9 /* AppDelegate.swift */,
@@ -92,6 +95,14 @@
 				2D5D477229FD76DE0071DFCA /* SearchResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2D5D477629FD81EE0071DFCA /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				2D5D477729FD81F70071DFCA /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				2D50E16D29FD57800009BBE9 /* ViewController.swift in Sources */,
 				2D5D476B29FD6D160071DFCA /* SearchController.swift in Sources */,
 				2D5D476E29FD6D800071DFCA /* Podcast.swift in Sources */,
+				2D5D477829FD81F70071DFCA /* NetworkManager.swift in Sources */,
 				2D50E16929FD57800009BBE9 /* AppDelegate.swift in Sources */,
 				2D5D476529FD61590071DFCA /* MainTabBarController.swift in Sources */,
 				2D50E16B29FD57800009BBE9 /* SceneDelegate.swift in Sources */,
