@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import Alamofire
 
 final class SearchController: UITableViewController {
     
-    let dummyPodcasts = [
-        Podcast(name: "Test", artistName: "Another"),
-        Podcast(name: "Test", artistName: "Another"),
-        Podcast(name: "Test", artistName: "Another"),
-        Podcast(name: "Test", artistName: "Another")
-    ]
+    var podcasts: [Podcast] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     private let cellId = "podcastCell"
     private let searchController = UISearchController(searchResultsController: nil)
@@ -36,13 +38,13 @@ final class SearchController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dummyPodcasts.count
+        podcasts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.text = "\(dummyPodcasts[indexPath.row].artistName)\n\(dummyPodcasts[indexPath.row].name)"
+        cell.textLabel?.text = "\(podcasts[indexPath.row].artistName ?? "")\n\(podcasts[indexPath.row].trackName ?? "")"
         return cell
     }
 }
@@ -53,6 +55,19 @@ extension SearchController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        let parameters = ["term": searchText]
+        
+        AF.request("https://itunes.apple.com/search", parameters: parameters, encoding: URLEncoding.default).responseData { [weak self] response in
+            guard let self else { return }
+            guard response.error == nil else { return }
+            guard let data = response.data else { return }
+            
+            do {
+                let decodedObj = try JSONDecoder().decode(SearchResponse.self, from: data)
+                self.podcasts = decodedObj.results
+            } catch {
+                print(error)
+            }
+        }
     }
 }
