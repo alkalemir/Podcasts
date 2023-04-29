@@ -17,7 +17,7 @@ final class MainTabBarController: UITabBarController {
     
         viewControllers = [
             makeNavController(ViewController.self, title: "Favorites"),
-            makeNavController(ViewController.self, title: "Search"),
+            makeNavController(SearchController.self, title: "Search"),
             makeNavController(ViewController.self, title: "Downloads")
         ]
     }
