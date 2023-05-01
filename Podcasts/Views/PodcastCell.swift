@@ -15,6 +15,8 @@ final class PodcastCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var episodeCountLabel: UILabel!
     
+    static let cellID = "PodcastCell"
+    
     var podcast: Podcast! {
         didSet {
             trackNameLabel.text = podcast.trackName

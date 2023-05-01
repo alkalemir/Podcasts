@@ -17,7 +17,6 @@ final class SearchController: UITableViewController {
         }
     }
     
-    private let cellId = "podcastCell"
     private let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -34,7 +33,7 @@ final class SearchController: UITableViewController {
     
     private func setupTableView() {
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: cellId)
+        tableView.register(nib, forCellReuseIdentifier: PodcastCell.cellID)
         tableView.rowHeight = 132
     }
     
@@ -55,9 +54,15 @@ final class SearchController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PodcastCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PodcastCell.cellID, for: indexPath) as! PodcastCell
         cell.podcast = podcasts[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episodesController = EpisodesController()
+        episodesController.podcast = podcasts[indexPath.row]
+        navigationController?.pushViewController(episodesController, animated: true)
     }
 }
 

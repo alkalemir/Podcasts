@@ -10,6 +10,12 @@
 		2D4537EB29FFE4C500E138C8 /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4537E929FFE4C500E138C8 /* PodcastCell.swift */; };
 		2D4537EC29FFE4C500E138C8 /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4537EA29FFE4C500E138C8 /* PodcastCell.xib */; };
 		2D4537F029FFF02800E138C8 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2D4537EF29FFF02800E138C8 /* SDWebImage */; };
+		2D4537F42A00063400E138C8 /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4537F32A00063400E138C8 /* EpisodesController.swift */; };
+		2D4537F62A0008F600E138C8 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4537F52A0008F600E138C8 /* Episode.swift */; };
+		2D4537F92A000B3900E138C8 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2D4537F82A000B3900E138C8 /* FeedKit */; };
+		2D4537FC2A00125F00E138C8 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4537FA2A00125F00E138C8 /* EpisodeCell.swift */; };
+		2D4537FD2A00125F00E138C8 /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4537FB2A00125F00E138C8 /* EpisodeCell.xib */; };
+		2D4538002A001B4900E138C8 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4537FF2A001B4900E138C8 /* String+.swift */; };
 		2D50E16929FD57800009BBE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50E16829FD57800009BBE9 /* AppDelegate.swift */; };
 		2D50E16B29FD57800009BBE9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50E16A29FD57800009BBE9 /* SceneDelegate.swift */; };
 		2D50E17229FD57810009BBE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D50E17129FD57810009BBE9 /* Assets.xcassets */; };
@@ -25,6 +31,11 @@
 /* Begin PBXFileReference section */
 		2D4537E929FFE4C500E138C8 /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
 		2D4537EA29FFE4C500E138C8 /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
+		2D4537F32A00063400E138C8 /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
+		2D4537F52A0008F600E138C8 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		2D4537FA2A00125F00E138C8 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		2D4537FB2A00125F00E138C8 /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
+		2D4537FF2A001B4900E138C8 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		2D50E16529FD57800009BBE9 /* Podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50E16829FD57800009BBE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D50E16A29FD57800009BBE9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D4537F92A000B3900E138C8 /* FeedKit in Frameworks */,
 				2D4537F029FFF02800E138C8 /* SDWebImage in Frameworks */,
 				2D5D477129FD72550071DFCA /* Alamofire in Frameworks */,
 			);
@@ -56,6 +68,8 @@
 			children = (
 				2D4537E929FFE4C500E138C8 /* PodcastCell.swift */,
 				2D4537EA29FFE4C500E138C8 /* PodcastCell.xib */,
+				2D4537FA2A00125F00E138C8 /* EpisodeCell.swift */,
+				2D4537FB2A00125F00E138C8 /* EpisodeCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -79,6 +93,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2D4537FE2A001B3A00E138C8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2D4537FF2A001B4900E138C8 /* String+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2D50E15C29FD57800009BBE9 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +120,7 @@
 		2D50E16729FD57800009BBE9 /* Podcasts */ = {
 			isa = PBXGroup;
 			children = (
+				2D4537FE2A001B3A00E138C8 /* Extensions */,
 				2D4537F22A0005BF00E138C8 /* Resources */,
 				2D4537F12A0005B700E138C8 /* App */,
 				2D4537E829FFE4A600E138C8 /* Views */,
@@ -113,6 +136,7 @@
 			children = (
 				2D5D476429FD61590071DFCA /* MainTabBarController.swift */,
 				2D5D476A29FD6D160071DFCA /* SearchController.swift */,
+				2D4537F32A00063400E138C8 /* EpisodesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +146,7 @@
 			children = (
 				2D5D476D29FD6D800071DFCA /* Podcast.swift */,
 				2D5D477229FD76DE0071DFCA /* SearchResponse.swift */,
+				2D4537F52A0008F600E138C8 /* Episode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -153,6 +178,7 @@
 			packageProductDependencies = (
 				2D5D477029FD72550071DFCA /* Alamofire */,
 				2D4537EF29FFF02800E138C8 /* SDWebImage */,
+				2D4537F82A000B3900E138C8 /* FeedKit */,
 			);
 			productName = Podcasts;
 			productReference = 2D50E16529FD57800009BBE9 /* Podcasts.app */;
@@ -185,6 +211,7 @@
 			packageReferences = (
 				2D5D476F29FD72550071DFCA /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2D4537EE29FFF02800E138C8 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				2D4537F72A000B3900E138C8 /* XCRemoteSwiftPackageReference "FeedKit" */,
 			);
 			productRefGroup = 2D50E16629FD57800009BBE9 /* Products */;
 			projectDirPath = "";
@@ -201,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D50E17529FD57810009BBE9 /* LaunchScreen.storyboard in Resources */,
+				2D4537FD2A00125F00E138C8 /* EpisodeCell.xib in Resources */,
 				2D50E17229FD57810009BBE9 /* Assets.xcassets in Resources */,
 				2D4537EC29FFE4C500E138C8 /* PodcastCell.xib in Resources */,
 			);
@@ -216,10 +244,14 @@
 				2D5D477329FD76DE0071DFCA /* SearchResponse.swift in Sources */,
 				2D5D476B29FD6D160071DFCA /* SearchController.swift in Sources */,
 				2D5D476E29FD6D800071DFCA /* Podcast.swift in Sources */,
+				2D4537FC2A00125F00E138C8 /* EpisodeCell.swift in Sources */,
+				2D4537F62A0008F600E138C8 /* Episode.swift in Sources */,
+				2D4537F42A00063400E138C8 /* EpisodesController.swift in Sources */,
 				2D5D477829FD81F70071DFCA /* NetworkManager.swift in Sources */,
 				2D50E16929FD57800009BBE9 /* AppDelegate.swift in Sources */,
 				2D5D476529FD61590071DFCA /* MainTabBarController.swift in Sources */,
 				2D4537EB29FFE4C500E138C8 /* PodcastCell.swift in Sources */,
+				2D4538002A001B4900E138C8 /* String+.swift in Sources */,
 				2D50E16B29FD57800009BBE9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +470,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		2D4537F72A000B3900E138C8 /* XCRemoteSwiftPackageReference "FeedKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nmdias/FeedKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		2D5D476F29FD72550071DFCA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -453,6 +493,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2D4537EE29FFF02800E138C8 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		2D4537F82A000B3900E138C8 /* FeedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D4537F72A000B3900E138C8 /* XCRemoteSwiftPackageReference "FeedKit" */;
+			productName = FeedKit;
 		};
 		2D5D477029FD72550071DFCA /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
