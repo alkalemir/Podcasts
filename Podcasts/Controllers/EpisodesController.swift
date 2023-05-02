@@ -66,4 +66,14 @@ final class EpisodesController: UITableViewController {
         cell.episode = episodes[indexPath.row]
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let window = UIApplication.shared.keyWindow
+        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailView", owner: self)?.first as! PlayerDetailView
+        playerDetailsView.episode = episodes[indexPath.row]
+        
+        playerDetailsView.frame = view.frame
+        window?.addSubview(playerDetailsView)
+    }
 }

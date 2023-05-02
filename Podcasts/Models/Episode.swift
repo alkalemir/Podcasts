@@ -13,11 +13,13 @@ struct Episode: Decodable {
     let pubDate: Date
     let description: String
     var imageURL: String?
+    let author: String?
     
     init(feedItem: RSSFeedItem) {
         self.title = feedItem.title ?? ""
         self.pubDate = feedItem.pubDate ?? Date()
-        self.description = feedItem.description ?? ""
+        self.description = feedItem.iTunes?.iTunesSubtitle ?? ""
         self.imageURL = feedItem.iTunes?.iTunesImage?.attributes?.href ?? ""
+        self.author = feedItem.iTunes?.iTunesAuthor
     }
 }
