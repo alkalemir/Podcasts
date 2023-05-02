@@ -14,8 +14,10 @@ struct Episode: Decodable {
     let description: String
     var imageURL: String?
     let author: String?
+    let mediaUrl: String?
     
     init(feedItem: RSSFeedItem) {
+        mediaUrl = feedItem.enclosure?.attributes?.url
         self.title = feedItem.title ?? ""
         self.pubDate = feedItem.pubDate ?? Date()
         self.description = feedItem.iTunes?.iTunesSubtitle ?? ""
