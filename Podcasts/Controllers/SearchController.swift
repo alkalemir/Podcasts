@@ -46,7 +46,7 @@ final class SearchController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        podcasts.count > 0 ? 0 : 250
+        podcasts.isEmpty && searchController.searchBar.text?.isEmpty == true ? 250 : 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,16 +66,14 @@ final class SearchController: UITableViewController {
     }
     
     var timer: Timer?
-    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
-    private func showActivityIndicator() {
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        activityIndicator.center = view.center
+    var podcastSearchView = Bundle.main.loadNibNamed("PodcastsSearchingView", owner: self, options: nil)?.first as? UIView
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return podcastSearchView
     }
     
-    private func hideActivityIndicator() {
-        activityIndicator.removeFromSuperview()
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == false ? 200 : 0
     }
 }
 
@@ -85,12 +83,11 @@ extension SearchController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        podcasts = []
         timer?.invalidate()
-        showActivityIndicator()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
             NetworkManager.shared.fetchPodcasts(for: searchText) { [weak self] result in
                 guard let self else { return }
-                self.hideActivityIndicator()
                 switch result {
                 case .success(let podcasts):
                     self.podcasts = podcasts

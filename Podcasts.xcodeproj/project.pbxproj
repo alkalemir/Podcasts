@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D01648E2A02F321003543E0 /* PodcastsSearchingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D01648D2A02F321003543E0 /* PodcastsSearchingView.xib */; };
 		2D21A6A52A01A77C003EC59E /* CMTime+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D21A6A42A01A77C003EC59E /* CMTime+.swift */; };
 		2D4537EB29FFE4C500E138C8 /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4537E929FFE4C500E138C8 /* PodcastCell.swift */; };
 		2D4537EC29FFE4C500E138C8 /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4537EA29FFE4C500E138C8 /* PodcastCell.xib */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D01648D2A02F321003543E0 /* PodcastsSearchingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PodcastsSearchingView.xib; sourceTree = "<group>"; };
 		2D21A6A42A01A77C003EC59E /* CMTime+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+.swift"; sourceTree = "<group>"; };
 		2D4537E929FFE4C500E138C8 /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
 		2D4537EA29FFE4C500E138C8 /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		2D4537E829FFE4A600E138C8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2D01648D2A02F321003543E0 /* PodcastsSearchingView.xib */,
 				2D4537E929FFE4C500E138C8 /* PodcastCell.swift */,
 				2D4537EA29FFE4C500E138C8 /* PodcastCell.xib */,
 				2D4537FA2A00125F00E138C8 /* EpisodeCell.swift */,
@@ -243,6 +246,7 @@
 				2D50E17529FD57810009BBE9 /* LaunchScreen.storyboard in Resources */,
 				2D4537FD2A00125F00E138C8 /* EpisodeCell.xib in Resources */,
 				2D50E17229FD57810009BBE9 /* Assets.xcassets in Resources */,
+				2D01648E2A02F321003543E0 /* PodcastsSearchingView.xib in Resources */,
 				2D4537EC29FFE4C500E138C8 /* PodcastCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
