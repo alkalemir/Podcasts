@@ -67,7 +67,7 @@ final class SearchController: UITableViewController {
     
     var timer: Timer?
     
-    var podcastSearchView = Bundle.main.loadNibNamed("PodcastsSearchingView", owner: self, options: nil)?.first as? UIView
+    var podcastSearchView = Bundle.main.loadNibNamed("PodcastsSearchingView", owner: SearchController.self, options: nil)?.first as? UIView
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return podcastSearchView
     }
