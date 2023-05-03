@@ -64,6 +64,8 @@ final class SearchController: UITableViewController {
         episodesController.podcast = podcasts[indexPath.row]
         navigationController?.pushViewController(episodesController, animated: true)
     }
+    
+    var timer: Timer?
 }
 
 extension SearchController: UISearchBarDelegate {
@@ -72,13 +74,17 @@ extension SearchController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        NetworkManager.shared.fetchPodcasts(for: searchText) { result in
-            switch result {
-            case .success(let podcasts):
-                self.podcasts = podcasts
-            case .failure(let error):
-                print(error)
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            NetworkManager.shared.fetchPodcasts(for: searchText) { result in
+                switch result {
+                case .success(let podcasts):
+                    self.podcasts = podcasts
+                case .failure(let error):
+                    print(error)
+                }
             }
-        }
+        })
+       
     }
 }
