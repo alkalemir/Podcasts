@@ -30,31 +30,35 @@ final class EpisodesController: UITableViewController {
         guard let feedString = podcast.feedUrl else { return }
         let secureFeedURL = feedString.toSecureHTTPS()
         guard let feedURL = URL(string: secureFeedURL) else { return }
-        let parser = FeedParser(URL: feedURL)
-        parser.parseAsync { [weak self] result in
-            guard let self else { return }
-            
-            switch result {
-            case .success(let feed):
-                switch feed {
-                case let .rss(feed):
-                    let imageURL = feed.iTunes?.iTunesImage?.attributes?.href
-                    
-                    feed.items?.forEach({
-                        var episode = Episode(feedItem: $0)
-                        episode.imageURL = imageURL
-                        self.episodes.append(episode)
-                    })
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+        
+        DispatchQueue.global(qos: .background).async {
+            let parser = FeedParser(URL: feedURL)
+            parser.parseAsync { [weak self] result in
+                guard let self else { return }
+                
+                switch result {
+                case .success(let feed):
+                    switch feed {
+                    case let .rss(feed):
+                        let imageURL = feed.iTunes?.iTunesImage?.attributes?.href
+                        
+                        feed.items?.forEach({
+                            var episode = Episode(feedItem: $0)
+                            episode.imageURL = imageURL
+                            self.episodes.append(episode)
+                        })
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    default:
+                        fatalError("feed error")
                     }
-                default:
-                    fatalError("feed error")
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
             }
         }
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
