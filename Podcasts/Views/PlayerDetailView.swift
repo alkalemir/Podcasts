@@ -52,7 +52,8 @@ final class PlayerDetailView: UIView {
         super.awakeFromNib()
         
         let interval = CMTimeMake(value: 1, timescale: 2)
-        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
+            guard let self else { return }
             self.passedTimeLabel.text = time.toDisplayString()
             
             if let duration = self.player.currentItem?.duration {
@@ -65,7 +66,8 @@ final class PlayerDetailView: UIView {
         
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
-        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            guard let self else { return }
             self.enlargeEpisodeImageView()
         }
     }
