@@ -66,6 +66,17 @@ final class SearchController: UITableViewController {
     }
     
     var timer: Timer?
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
+    private func showActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        activityIndicator.center = view.center
+    }
+    
+    private func hideActivityIndicator() {
+        activityIndicator.removeFromSuperview()
+    }
 }
 
 extension SearchController: UISearchBarDelegate {
@@ -75,8 +86,11 @@ extension SearchController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
+        showActivityIndicator()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
-            NetworkManager.shared.fetchPodcasts(for: searchText) { result in
+            NetworkManager.shared.fetchPodcasts(for: searchText) { [weak self] result in
+                guard let self else { return }
+                self.hideActivityIndicator()
                 switch result {
                 case .success(let podcasts):
                     self.podcasts = podcasts
