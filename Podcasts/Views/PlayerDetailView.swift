@@ -48,8 +48,14 @@ final class PlayerDetailView: UIView {
         return avPlayer
     }()
     
+    static func initFromNib() -> PlayerDetailView {
+        Bundle.main.loadNibNamed("PlayerDetailView", owner: self)?.first as! PlayerDetailView
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
         
         let interval = CMTimeMake(value: 1, timescale: 2)
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
@@ -70,6 +76,11 @@ final class PlayerDetailView: UIView {
             guard let self else { return }
             self.enlargeEpisodeImageView()
         }
+    }
+    
+    @objc func handleTapMaximize() {
+        guard let mainTabVC = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+        mainTabVC.maximizePlayerDetails(episode: self.episode)
     }
     
     private func playEpisode() {
@@ -116,7 +127,10 @@ final class PlayerDetailView: UIView {
     }
     
     @IBAction func handleDismiss(sender: UIButton) {
-        self.removeFromSuperview()
+//        self.removeFromSuperview()
+        let window = UIApplication.shared.keyWindow
+        guard let tabVC = window?.rootViewController as? MainTabBarController else { return }
+        tabVC.minimizePlayerDetails()
     }
     
     @IBAction func handleRewindButton(_ sender: UIButton) {
