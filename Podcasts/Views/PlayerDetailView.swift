@@ -65,8 +65,10 @@ final class PlayerDetailView: UIView {
             if let duration = self.player.currentItem?.duration {
                 self.totalTimeLabel.text = duration.toDisplayString()
                 let passed = Int(CMTimeGetSeconds(time))
-                let total = Int(CMTimeGetSeconds(duration))
-                self.timeSlider.value = Float(passed) / Float(total)
+                if !CMTimeGetSeconds(duration).isNaN {
+                    let total = Int(CMTimeGetSeconds(duration))
+                    self.timeSlider.value = Float(passed) / Float(total)
+                }
             }
         }
         
